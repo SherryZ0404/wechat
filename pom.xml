@@ -7,17 +7,17 @@
 	<packaging>war</packaging>
 	<name>wechat</name>
 	<description />
-	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.version>4.2.0.RELEASE</spring.version>
 		<org.hibernate-version>4.1.7.Final</org.hibernate-version>
 	</properties>
 	<dependencies>
-		<dependency>
-            	<groupId>org.springframework.boot</groupId>
-           	 <artifactId>spring-boot-starter-web</artifactId>
-        	</dependency>
+        <dependency>
+            <groupId>com.heroku.sdk</groupId>
+            <artifactId>heroku-maven-plugin</artifactId>
+            <version>1.0.3</version>
+        </dependency>
 		<dependency>
 			<groupId>org.glassfish</groupId>
 			<artifactId>bean-validator</artifactId>
@@ -204,12 +204,6 @@
 			</resource>
 		</resources>
 		<plugins>
-			
-         		<plugin>
-                	<groupId>org.springframework.boot</groupId>
-                	<artifactId>spring-boot-maven-plugin</artifactId>
-            		</plugin>
-  			
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
@@ -227,29 +221,27 @@
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
-			
-			<plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-dependency-plugin</artifactId>
-            <version>2.3</version>
-            <executions>
-                <execution>
-                    <phase>package</phase>
-                    <goals><goal>copy</goal></goals>
-                    <configuration>
-                        <artifactItems>
-                            <artifactItem>
-                                <groupId>com.github.jsimone</groupId>
-                                <artifactId>webapp-runner</artifactId>
-                                <version>8.5.11.3</version>
-                                <destFileName>webapp-runner.jar</destFileName>
-                            </artifactItem>
-                        </artifactItems>
-                    </configuration>
-                </execution>
-            </executions>
-        </plugin>
-			
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals><goal>copy</goal></goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>com.github.jsimone</groupId>
+                                    <artifactId>webapp-runner</artifactId>
+                                    <version>8.5.11.3</version>
+                                    <destFileName>webapp-runner.jar</destFileName>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 		</plugins>
 	</build>
 </project>
